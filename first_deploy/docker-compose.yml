@@ -19,7 +19,7 @@ services:
 
   web:
     build: .
-    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    command: gunicorn first_deploy.wsgi:application --bind 0.0.0.0:8000 --workers 3
     volumes:
       - .:/app
     ports:
