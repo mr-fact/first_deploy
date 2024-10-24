@@ -22,15 +22,16 @@ services:
     command: gunicorn first_deploy.wsgi:application --bind 0.0.0.0:8000 --workers 3
     volumes:
       - .:/app
-#    ports:
+    ports:
+      - "8000"
 #      - "8000:8000"
     env_file:
       - .env
 #    depends_on:
 #      - db
 #      - redis
-    networks:
-      - myproject_network
+#    networks:
+#      - myproject_network
 
 #  celery:
 #    build: .
@@ -45,22 +46,22 @@ services:
 #    networks:
 #      - myproject_network
 
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - web
-    networks:
-      - myproject_network
+#  nginx:
+#    image: nginx:latest
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - /etc/letsencrypt:/etc/letsencrypt:ro
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    depends_on:
+#      - web
+#    networks:
+#      - myproject_network
 
 #volumes:
 #  postgres_data:
 
-networks:
-  myproject_network:
-    driver: bridge
+#networks:
+#  myproject_network:
+#    driver: bridge
