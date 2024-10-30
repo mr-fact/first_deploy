@@ -10,7 +10,13 @@ class Room(models.Model):
     capacity = models.IntegerField(default=6)
 
     def __str__(self):
-        return str(self.name)
+        return f'{self.name} - {self.year}'
+
+    def capacity_is_free(self):
+        if self.capacity > self.students.all().count():
+            return True
+        else:
+            return False
 
 
 class Student(models.Model):
