@@ -87,6 +87,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT')
     }
 }
+CURRENT_YEAR = 1403
 
 
 # Password validation
